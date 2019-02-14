@@ -1,11 +1,9 @@
 // @flow
 
 import * as React from 'react';
-import { StyleSheet, Badge } from '@kiwicom/universal-components';
-import { View } from 'react-native';
 import * as DateFNS from 'date-fns';
 
-import ItineraryCardRow from './ItineraryCardRow';
+import StopoverDurationContent from './StopoverDurationContent';
 
 type Props = {|
   +stopoverDuration: ?number,
@@ -23,18 +21,9 @@ export default function StopoverDuration({
   locationName,
 }: Props) {
   return stopoverDuration ? (
-    <ItineraryCardRow>
-      <View style={styles.leftShift}>
-        <Badge type="neutral">
-          Stays {getDuration(stopoverDuration)}
-          {locationName && ` in ${locationName}`}
-        </Badge>
-      </View>
-    </ItineraryCardRow>
+    <StopoverDurationContent>
+      Stays {getDuration(stopoverDuration)}
+      {locationName && ` in ${locationName}`}
+    </StopoverDurationContent>
   ) : null;
 }
-const styles = StyleSheet.create({
-  leftShift: {
-    paddingStart: 103,
-  },
-});

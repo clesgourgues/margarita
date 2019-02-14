@@ -1,6 +1,10 @@
 /**
  * @flow
+<<<<<<< master
  * @relayHash b948a7812c12c2a293c0f230a859e685
+=======
+ * @relayHash aa30d3393ef48cc2b3c3d090d41fccdb
+>>>>>>> Refactor: TripSector web layout
  */
 
 /* eslint-disable */
@@ -182,7 +186,11 @@ v5 = {
     (v3/*: any*/)
   ]
 },
-v6 = {
+v6 = [
+  v4,
+  v5
+],
+v7 = {
   "kind": "LinkedField",
   "alias": null,
   "name": "time",
@@ -200,19 +208,24 @@ v6 = {
     }
   ]
 },
+<<<<<<< master
 v7 = [
   (v4/*: any*/),
   (v5/*: any*/),
   (v6/*: any*/)
+=======
+v8 = [
+  v7
+>>>>>>> Refactor: TripSector web layout
 ],
-v8 = {
+v9 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "duration",
   "args": null,
   "storageKey": null
 },
-v9 = [
+v10 = [
   {
     "kind": "LinkedField",
     "alias": null,
@@ -221,7 +234,11 @@ v9 = [
     "args": null,
     "concreteType": "RouteStop",
     "plural": false,
+<<<<<<< master
     "selections": (v7/*: any*/)
+=======
+    "selections": v8
+>>>>>>> Refactor: TripSector web layout
   },
   {
     "kind": "LinkedField",
@@ -231,6 +248,7 @@ v9 = [
     "args": null,
     "concreteType": "RouteStop",
     "plural": false,
+<<<<<<< master
     "selections": (v7/*: any*/)
   },
   (v2/*: any*/),
@@ -242,6 +260,16 @@ v10 = [
 ],
 v11 = [
   (v6/*: any*/)
+=======
+    "selections": v8
+  },
+  v9
+],
+v11 = [
+  v4,
+  v5,
+  v7
+>>>>>>> Refactor: TripSector web layout
 ],
 v12 = [
   {
@@ -264,7 +292,12 @@ v12 = [
     "plural": false,
     "selections": (v11/*: any*/)
   },
+<<<<<<< master
   (v8/*: any*/)
+=======
+  v2,
+  v9
+>>>>>>> Refactor: TripSector web layout
 ];
 return {
   "kind": "Request",
@@ -339,38 +372,6 @@ return {
           (v3/*: any*/),
           {
             "kind": "InlineFragment",
-            "type": "BookingOneWay",
-            "selections": [
-              {
-                "kind": "LinkedField",
-                "alias": null,
-                "name": "trip",
-                "storageKey": null,
-                "args": null,
-                "concreteType": "Trip",
-                "plural": false,
-                "selections": (v9/*: any*/)
-              }
-            ]
-          },
-          {
-            "kind": "InlineFragment",
-            "type": "BookingMulticity",
-            "selections": [
-              {
-                "kind": "LinkedField",
-                "alias": null,
-                "name": "trips",
-                "storageKey": null,
-                "args": null,
-                "concreteType": "Trip",
-                "plural": true,
-                "selections": (v9/*: any*/)
-              }
-            ]
-          },
-          {
-            "kind": "InlineFragment",
             "type": "BookingReturn",
             "selections": [
               {
@@ -381,18 +382,42 @@ return {
                 "args": null,
                 "concreteType": "RouteStop",
                 "plural": false,
-                "selections": (v10/*: any*/)
+<<<<<<< master
+                "selections": (v9/*: any*/)
+              }
+            ]
+          },
+          {
+            "kind": "InlineFragment",
+            "type": "BookingMulticity",
+            "selections": [
+=======
+                "selections": v6
               },
+>>>>>>> Refactor: TripSector web layout
               {
                 "kind": "LinkedField",
                 "alias": null,
                 "name": "arrival",
                 "storageKey": null,
                 "args": null,
+<<<<<<< master
+                "concreteType": "Trip",
+                "plural": true,
+                "selections": (v9/*: any*/)
+              }
+            ]
+          },
+          {
+            "kind": "InlineFragment",
+            "type": "BookingReturn",
+            "selections": [
+=======
                 "concreteType": "RouteStop",
                 "plural": false,
-                "selections": (v10/*: any*/)
+                "selections": v6
               },
+>>>>>>> Refactor: TripSector web layout
               {
                 "kind": "LinkedField",
                 "alias": null,
@@ -401,12 +426,55 @@ return {
                 "args": null,
                 "concreteType": "Trip",
                 "plural": false,
-                "selections": (v12/*: any*/)
+                "selections": (v10/*: any*/)
               },
               {
                 "kind": "LinkedField",
                 "alias": null,
                 "name": "outbound",
+                "storageKey": null,
+                "args": null,
+                "concreteType": "Trip",
+                "plural": false,
+<<<<<<< master
+                "selections": (v10/*: any*/)
+              },
+=======
+                "selections": v10
+              }
+            ]
+          },
+          {
+            "kind": "InlineFragment",
+            "type": "BookingMulticity",
+            "selections": [
+>>>>>>> Refactor: TripSector web layout
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "trips",
+                "storageKey": null,
+                "args": null,
+                "concreteType": "Trip",
+<<<<<<< master
+                "plural": false,
+                "selections": (v12/*: any*/)
+              },
+=======
+                "plural": true,
+                "selections": v12
+              }
+            ]
+          },
+          {
+            "kind": "InlineFragment",
+            "type": "BookingOneWay",
+            "selections": [
+>>>>>>> Refactor: TripSector web layout
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "trip",
                 "storageKey": null,
                 "args": null,
                 "concreteType": "Trip",

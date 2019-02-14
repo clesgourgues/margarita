@@ -1,6 +1,10 @@
 /**
  * @flow
+<<<<<<< master
  * @relayHash 7999e847d347a9c9fcb3abc5ade9803b
+=======
+ * @relayHash a4db9074092ee938f47653040a52e87e
+>>>>>>> Refactor: TripSector web layout
  */
 
 /* eslint-disable */
@@ -77,6 +81,30 @@ fragment RenderTripSectorItem on Sector {
 }
 
 fragment TripSector on Sector {
+  ...TripSectorNative
+  ...TripSectorWeb
+}
+
+fragment TripSectorNative on Sector {
+  duration
+  arrivalTime {
+    ...LocalTime
+  }
+  departureTime {
+    ...LocalTime
+  }
+  destination {
+    ...LocationName
+    id
+  }
+  origin {
+    ...LocationName
+    id
+  }
+  ...Transporters
+}
+
+fragment TripSectorWeb on Sector {
   duration
   arrivalTime {
     ...LocalTime
@@ -159,6 +187,14 @@ v5 = [
 ];
 return {
   "kind": "Request",
+<<<<<<< master
+=======
+  "operationKind": "query",
+  "name": "ResultsQuery",
+  "id": null,
+  "text": "query ResultsQuery(\n  $input: ItinerariesSearchInput!\n) {\n  searchItineraries(input: $input) {\n    ...ResultsList\n  }\n}\n\nfragment ResultsList on ItineraryConnection {\n  edges {\n    node {\n      id\n      ...ItineraryCard\n    }\n  }\n}\n\nfragment ItineraryCard on Itinerary {\n  sectors {\n    ...RenderTripSectorItem\n  }\n  price {\n    currency\n    amount\n  }\n}\n\nfragment RenderTripSectorItem on Sector {\n  origin {\n    name\n    id\n  }\n  stopoverDuration\n  ...TripSector\n}\n\nfragment TripSector on Sector {\n  ...TripSectorNative\n  ...TripSectorWeb\n}\n\nfragment TripSectorNative on Sector {\n  duration\n  arrivalTime {\n    ...LocalTime\n  }\n  departureTime {\n    ...LocalTime\n  }\n  destination {\n    ...LocationName\n    id\n  }\n  origin {\n    ...LocationName\n    id\n  }\n  ...Transporters\n}\n\nfragment TripSectorWeb on Sector {\n  duration\n  arrivalTime {\n    ...LocalTime\n  }\n  departureTime {\n    ...LocalTime\n  }\n  destination {\n    ...LocationName\n    id\n  }\n  origin {\n    ...LocationName\n    id\n  }\n  ...Transporters\n}\n\nfragment LocalTime on DateType {\n  local\n}\n\nfragment LocationName on Location {\n  name\n}\n\nfragment Transporters on Sector {\n  segments {\n    transporter {\n      name\n    }\n    id\n  }\n}\n",
+  "metadata": {},
+>>>>>>> Refactor: TripSector web layout
   "fragment": {
     "kind": "Fragment",
     "name": "ResultsQuery",
