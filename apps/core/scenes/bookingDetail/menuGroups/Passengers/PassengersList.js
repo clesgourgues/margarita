@@ -3,6 +3,7 @@
 import * as React from 'react';
 import { View } from 'react-native';
 import { StyleSheet } from '@kiwicom/universal-components';
+import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
 
 import Passenger from './Passenger';
@@ -38,6 +39,6 @@ export default createFragmentContainer(
 const styles = StyleSheet.create({
   container: {
     marginStart: 48,
-    paddingVertical: 6,
+    paddingVertical: parseInt(defaultTokens.spaceXXSmall, 10),
   },
 });
