@@ -21,11 +21,12 @@ import {
   withSearchContext,
   type SearchContextState,
   type Location,
+  type ModalTypes,
 } from './SearchContext';
 import Placepickers from './Placepickers';
 import Datepickers from './Datepickers';
 import SearchModal from './SearchModal';
-import { DATE_FORMAT } from './SearchConstants';
+import { DATE_FORMAT, MODAL_TYPE } from './SearchConstants';
 import SearchFormModes from './SearchFormModes';
 
 type Props = {
@@ -41,6 +42,7 @@ type Props = {
   +infants: number,
   +bags: number,
   +layout: number,
+  +setModalType: ModalTypes => void,
 };
 
 class Search extends React.Component<Props> {
@@ -57,21 +59,26 @@ class Search extends React.Component<Props> {
       returnDateFrom,
       returnDateTo,
       tripType,
+      setModalType,
     } = this.props;
-    this.props.navigation.navigate(Routes.RESULTS, {
-      travelFrom: travelFrom?.locationId,
-      travelTo: travelTo?.locationId,
-      travelFromName: travelFrom?.name,
-      travelToName: travelTo?.name,
-      dateFrom: format(dateFrom, DATE_FORMAT),
-      dateTo: format(dateTo, DATE_FORMAT),
-      ...(tripType === 'return'
-        ? {
-            returnDateFrom: format(returnDateFrom, DATE_FORMAT),
-            returnDateTo: format(returnDateTo, DATE_FORMAT),
-          }
-        : {}),
-    });
+    if (travelFrom == null && travelTo == null) {
+      setModalType(MODAL_TYPE.NO_LOCATION_SELECTED);
+    } else {
+      this.props.navigation.navigate(Routes.RESULTS, {
+        travelFrom: travelFrom?.locationId,
+        travelTo: travelTo?.locationId,
+        travelFromName: travelFrom?.name,
+        travelToName: travelTo?.name,
+        dateFrom: format(dateFrom, DATE_FORMAT),
+        dateTo: format(dateTo, DATE_FORMAT),
+        ...(tripType === 'return'
+          ? {
+              returnDateFrom: format(returnDateFrom, DATE_FORMAT),
+              returnDateTo: format(returnDateTo, DATE_FORMAT),
+            }
+          : {}),
+      });
+    }
   };
 
   render() {
@@ -171,6 +178,7 @@ const select = ({
   adults,
   infants,
   bags,
+  actions: { setModalType },
 }: SearchContextState) => ({
   travelFrom,
   travelTo,
@@ -182,6 +190,7 @@ const select = ({
   adults,
   infants,
   bags,
+  setModalType,
 });
 
 export default withNavigation(

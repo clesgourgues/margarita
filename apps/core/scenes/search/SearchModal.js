@@ -13,6 +13,7 @@ import {
   type Location,
 } from './SearchContext';
 import PlacePicker from './PlacePicker/PlacePickerRenderer';
+import NoLocationSelected from './NoLocationSelected';
 
 type Props = {|
   +onClose: () => void,
@@ -87,6 +88,9 @@ class SearchModal extends React.Component<Props> {
         )}
         {[MODAL_TYPE.ORIGIN, MODAL_TYPE.DESTINATION].includes(modalType) && (
           <PlacePicker defaultPlace={this.getDefaultPlace()} />
+        )}
+        {modalType === MODAL_TYPE.NO_LOCATION_SELECTED && (
+          <NoLocationSelected />
         )}
       </Modal>
     );
